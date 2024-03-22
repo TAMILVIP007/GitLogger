@@ -59,7 +59,7 @@ type (
 )
 
 func main() {
-	flag.StringVar(&appName, "name", "", "Command to build the application")
+	flag.StringVar(&appName, "name", "", "Name of your application")
 	flag.StringVar(&buildCommand, "pull-cmd", "", "Command to build the application")
 	flag.StringVar(&restartCommand, "restart-cmd", "", "Command to restart the application")
 	flag.StringVar(&prodUrl, "url", "", "URL of the production server")
@@ -73,7 +73,7 @@ func main() {
 	}
 	http.HandleFunc("/", handleHello)
 	http.HandleFunc("/webhook", handleWebhook)
-	log.Println("Server started at :8080")
+	log.Println("Server started at port", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
